@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import * as THREE from "three";
+import { Vector3 } from "@react-three/fiber";
+import { useState } from "react";
 
 interface TileProps {
   position: number[];
@@ -7,18 +7,15 @@ interface TileProps {
 }
 
 export function Tile(props: TileProps) {
-
-  const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
 
   return (
     <mesh
-      position={props.position}
-      ref={meshRef}
-      onClick={(event) => setActive(!active)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}
+      position={props.position as Vector3}
+      onClick={() => setActive(!active)}
+      onPointerOver={() => setHover(true)}
+      onPointerOut={() => setHover(false)}
     >
       <boxGeometry args={[1, 0.1, 1]} />
       <meshStandardMaterial color={hovered ? "red" : props.color} />
