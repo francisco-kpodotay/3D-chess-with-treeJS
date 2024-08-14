@@ -7,7 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-model/wooden_chess_set
+model/wooden_chess_set/textures
+model/wooden_chess_set/scene.bin
+model/wooden_chess_set/scene.gltf
+
 node_modules
 dist
 dist-ssr

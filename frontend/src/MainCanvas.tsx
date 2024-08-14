@@ -7,6 +7,9 @@ import {
   GizmoViewport,
   PerspectiveCamera,
 } from "@react-three/drei";
+import { WhiteBishop } from "./pieces/WhiteBishop";
+import { WhiteKing } from "./pieces/WhiteKing";
+import { Pieces } from "./pieces/Pieces";
 
 
 //[X, Y, Z]
@@ -24,6 +27,9 @@ export function MainCanvas() {
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
       <PerspectiveCamera makeDefault position={[-10, 4, 0]} /> 
       <Board />
+
+      <Pieces/>
+      
       <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
         <GizmoViewport
           axisColors={["#9d4b4b", "#2f7f4f", "#3b5b9d"]}
