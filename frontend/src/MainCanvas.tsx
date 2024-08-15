@@ -7,8 +7,6 @@ import {
   GizmoViewport,
   PerspectiveCamera,
 } from "@react-three/drei";
-import { WhiteBishop } from "./pieces/WhiteBishop";
-import { WhiteKing } from "./pieces/WhiteKing";
 import { Pieces } from "./pieces/Pieces";
 
 
