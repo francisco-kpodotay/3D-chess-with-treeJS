@@ -7,7 +7,7 @@ export function WhiteQueen(props: pieceProps) {
     "./model/wooden_chess_set/White/WhiteQueen/WhiteQueen.gltf"
   );
   return (
-    <group dispose={null}>
+    <group dispose={null} >
       <mesh
         castShadow
         receiveShadow

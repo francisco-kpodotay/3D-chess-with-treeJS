@@ -7,7 +7,7 @@ export function BlackKing(props: pieceProps) {
     "./model/wooden_chess_set/Black/BlackKing/BlackKing.gltf"
   );
   return (
-    <group dispose={null}>
+    <group dispose={null} >
       <mesh
         castShadow
         receiveShadow

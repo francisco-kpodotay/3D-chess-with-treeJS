@@ -12,41 +12,42 @@ import { WhiteQueen } from "./WhiteQueen";
 import { WhiteRook } from "./WhiteRook";
 
 export function Pieces() {
+  const upScale = 28;
+
   return (
     <>
-      <WhiteBishop upScale={28} position={[-3.5, 0, 1.5]} />
-      <WhiteBishop upScale={28} position={[-3.5, 0, -1.5]} />
-      <WhiteKing upScale={28} position={[-3.5, 0, -0.5]} />
-      <WhiteKnight upScale={28} position={[-3.5, 0, -2.5]} />
-      <WhiteKnight upScale={28} position={[-3.5, 0, 2.5]} />
-      <WhitePawn upScale={28} position={[-2.5, 0, -3.5]} />
-      <WhitePawn upScale={28} position={[-2.5, 0, -2.5]} />
-      <WhitePawn upScale={28} position={[-2.5, 0, -1.5]} />
-      <WhitePawn upScale={28} position={[-2.5, 0, -0.5]} />
-      <WhitePawn upScale={28} position={[-2.5, 0, 0.5]} />
-      <WhitePawn upScale={28} position={[-2.5, 0, 1.5]} />
-      <WhitePawn upScale={28} position={[-2.5, 0, 2.5]} />
-      <WhitePawn upScale={28} position={[-2.5, 0, 3.5]} />
-      <WhiteQueen upScale={28} position={[-3.5, 0, 0.5]} />
-      <WhiteRook upScale={28} position={[-3.5, 0, -3.5]} />
-      <WhiteRook upScale={28} position={[-3.5, 0, 3.5]} />
-
-      <BlackBishop upScale={28} position={[3.5, 0, 1.5]} />
-      <BlackBishop upScale={28} position={[3.5, 0, -1.5]} />
-      <BlackKing upScale={28} position={[3.5, 0, -0.5]} />
-      <BlackKnight upScale={28} position={[3.5, 0, 2.5]} />
-      <BlackKnight upScale={28} position={[3.5, 0, -2.5]} />
-      <BlackPawn upScale={28} position={[2.5, 0, 3.5]} />
-      <BlackPawn upScale={28} position={[2.5, 0, 2.5]} />
-      <BlackPawn upScale={28} position={[2.5, 0, 1.5]} />
-      <BlackPawn upScale={28} position={[2.5, 0, 0.5]} />
-      <BlackPawn upScale={28} position={[2.5, 0, -0.5]} />
-      <BlackPawn upScale={28} position={[2.5, 0, -1.5]} />
-      <BlackPawn upScale={28} position={[2.5, 0, -2.5]} />
-      <BlackPawn upScale={28} position={[2.5, 0, -3.5]} />
-      <BlackQueen upScale={28} position={[3.5, 0, 0.5]} />
-      <BlackRook upScale={28} position={[3.5, 0, 3.5]} />
-      <BlackRook upScale={28} position={[3.5, 0, -3.5]} />
+      <WhiteBishop position={[-3.5, 0, 1.5]} upScale={upScale} />
+      <WhiteBishop position={[-3.5, 0, -1.5]} upScale={upScale} />
+      <WhiteKing position={[-3.5, 0, -0.5]} upScale={upScale} />
+      <WhiteKnight position={[-3.5, 0, -2.5]} upScale={upScale} />
+      <WhiteKnight position={[-3.5, 0, 2.5]} upScale={upScale} />
+      <WhitePawn position={[-2.5, 0, -3.5]} upScale={upScale} />
+      <WhitePawn position={[-2.5, 0, -2.5]} upScale={upScale} />
+      <WhitePawn position={[-2.5, 0, -1.5]} upScale={upScale} />
+      <WhitePawn position={[-2.5, 0, -0.5]} upScale={upScale} />
+      <WhitePawn position={[-2.5, 0, 0.5]} upScale={upScale} />
+      <WhitePawn position={[-2.5, 0, 1.5]} upScale={upScale} />
+      <WhitePawn position={[-2.5, 0, 2.5]} upScale={upScale} />
+      <WhitePawn position={[-2.5, 0, 3.5]} upScale={upScale} />
+      <WhiteQueen position={[-3.5, 0, 0.5]} upScale={upScale} />
+      <WhiteRook position={[-3.5, 0, -3.5]} upScale={upScale} />
+      <WhiteRook position={[-3.5, 0, 3.5]} upScale={upScale} />
+      <BlackBishop position={[3.5, 0, 1.5]} upScale={upScale} />
+      <BlackBishop position={[3.5, 0, -1.5]} upScale={upScale} />
+      <BlackKing position={[3.5, 0, -0.5]} upScale={upScale} />
+      <BlackKnight position={[3.5, 0, 2.5]} upScale={upScale} />
+      <BlackKnight position={[3.5, 0, -2.5]} upScale={upScale} />
+      <BlackPawn position={[2.5, 0, 3.5]} upScale={upScale} />
+      <BlackPawn position={[2.5, 0, 2.5]} upScale={upScale} />
+      <BlackPawn position={[2.5, 0, 1.5]} upScale={upScale} />
+      <BlackPawn position={[2.5, 0, 0.5]} upScale={upScale} />
+      <BlackPawn position={[2.5, 0, -0.5]} upScale={upScale} />
+      <BlackPawn position={[2.5, 0, -1.5]} upScale={upScale} />
+      <BlackPawn position={[2.5, 0, -2.5]} upScale={upScale} />
+      <BlackPawn position={[2.5, 0, -3.5]} upScale={upScale} />
+      <BlackQueen position={[3.5, 0, 0.5]} upScale={upScale} />
+      <BlackRook position={[3.5, 0, 3.5]} upScale={upScale} />
+      <BlackRook position={[3.5, 0, -3.5]} upScale={upScale} />
     </>
   );
 }

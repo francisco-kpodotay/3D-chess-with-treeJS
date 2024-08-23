@@ -7,7 +7,7 @@ export function BlackRook(props: pieceProps) {
     "./model/wooden_chess_set/Black/BlackRook/BlackRook.gltf"
   );
   return (
-    <group dispose={null}>
+    <group dispose={null} >
       <mesh
         castShadow
         receiveShadow

@@ -9,11 +9,16 @@ interface TileProps {
 export function Tile(props: TileProps) {
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
+ /*  function handleClick(event){
+    setActive(!active)
+    console.log("tile position: ",props.position);
+    
+  } */
 
   return (
     <mesh
       position={props.position as Vector3}
-      onClick={() => setActive(!active)}
+      /* onClick={(e) => (handleClick(e))} */
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}
     >

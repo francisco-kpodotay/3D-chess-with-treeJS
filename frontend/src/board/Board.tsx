@@ -1,12 +1,20 @@
+import { useEffect, useState } from "react";
 import { Tile } from "./Tile";
 
 export function Board() {
+  const [tiles, setTiles] = useState()
+
+  useEffect(()=>{
+    generateTiles()
+  })
+
+
   function generateTiles() {
     const tiles = [];
 
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
-        const tileCoordinate = [col - 3.5, 0, row - 3.5];
+        const tileCoordinate = [col - 3.5, -0.05, row - 3.5];
 
         tiles.push(
           <Tile
@@ -17,8 +25,8 @@ export function Board() {
         );
       }
     }
-    return tiles;
+    setTiles(tiles)
   }
 
-  return <>{generateTiles()}</>;
+  return <>{tiles}</>;
 }
