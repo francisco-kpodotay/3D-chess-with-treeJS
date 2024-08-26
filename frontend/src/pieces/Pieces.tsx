@@ -18,7 +18,7 @@ export function Pieces() {
     <>
       <WhiteBishop position={[-3.5, 0, 1.5]} upScale={upScale} />
       <WhiteBishop position={[-3.5, 0, -1.5]} upScale={upScale} />
-      <WhiteKing position={[-3.5, 0, -0.5]} upScale={upScale} />
+      <WhiteKing position={[-3.5, 0, 0.5]} upScale={upScale} />
       <WhiteKnight position={[-3.5, 0, -2.5]} upScale={upScale} />
       <WhiteKnight position={[-3.5, 0, 2.5]} upScale={upScale} />
       <WhitePawn position={[-2.5, 0, -3.5]} upScale={upScale} />
@@ -29,12 +29,12 @@ export function Pieces() {
       <WhitePawn position={[-2.5, 0, 1.5]} upScale={upScale} />
       <WhitePawn position={[-2.5, 0, 2.5]} upScale={upScale} />
       <WhitePawn position={[-2.5, 0, 3.5]} upScale={upScale} />
-      <WhiteQueen position={[-3.5, 0, 0.5]} upScale={upScale} />
+      <WhiteQueen position={[-3.5, 0, -0.5]} upScale={upScale} />
       <WhiteRook position={[-3.5, 0, -3.5]} upScale={upScale} />
       <WhiteRook position={[-3.5, 0, 3.5]} upScale={upScale} />
       <BlackBishop position={[3.5, 0, 1.5]} upScale={upScale} />
       <BlackBishop position={[3.5, 0, -1.5]} upScale={upScale} />
-      <BlackKing position={[3.5, 0, -0.5]} upScale={upScale} />
+      <BlackKing position={[3.5, 0, 0.5]} upScale={upScale} />
       <BlackKnight position={[3.5, 0, 2.5]} upScale={upScale} />
       <BlackKnight position={[3.5, 0, -2.5]} upScale={upScale} />
       <BlackPawn position={[2.5, 0, 3.5]} upScale={upScale} />
@@ -45,7 +45,7 @@ export function Pieces() {
       <BlackPawn position={[2.5, 0, -1.5]} upScale={upScale} />
       <BlackPawn position={[2.5, 0, -2.5]} upScale={upScale} />
       <BlackPawn position={[2.5, 0, -3.5]} upScale={upScale} />
-      <BlackQueen position={[3.5, 0, 0.5]} upScale={upScale} />
+      <BlackQueen position={[3.5, 0, -0.5]} upScale={upScale} />
       <BlackRook position={[3.5, 0, 3.5]} upScale={upScale} />
       <BlackRook position={[3.5, 0, -3.5]} upScale={upScale} />
     </>
