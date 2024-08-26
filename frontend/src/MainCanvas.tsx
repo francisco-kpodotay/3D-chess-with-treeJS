@@ -9,40 +9,90 @@ import {
 } from "@react-three/drei";
 import { Pieces } from "./pieces/Pieces";
 import * as THREE from "three";
-import { useEffect } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 
 // New component that handles the click event
-function RaycastHandler() {
+function ClickHandler() {
   const { camera, scene } = useThree();
-  const raycaster = new THREE.Raycaster();
-  const pointer = new THREE.Vector2();
+  const piece = useRef<THREE.Mesh | null>(null);
 
-  function handleClick(event) {
-    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-    pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  
-    raycaster.setFromCamera(pointer, camera);
-    const intersects = raycaster.intersectObjects(scene.children, true);
-  
-    if (intersects.length > 0) {
-      const intersectedObject = intersects[0].object;
-  
-      // Check if the object has a material
-      if (intersectedObject.material) {
-        // Clone and modify the material color if needed
-        const newMaterial = intersectedObject.material.clone();
-        newMaterial.color.set(0xff0000);
-        intersectedObject.material = newMaterial;
+  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+    const intersectedMesh = selectMesh(event);
+    const tileScale = new THREE.Vector3(1, 1, 1);
+
+    if (tileScale.equals(intersectedMesh.scale)) {
+      console.log("this is a tile: ", intersectedMesh);
+      
+      if (piece.current !== null){
+        console.log(intersectedMesh?.position);
+        piece.current.position.x = intersectedMesh?.position.x
+        piece.current.position.z = intersectedMesh?.position.z
+        changeMeshColor("original", piece.current);
+        piece.current = null;
       }
-  
-      // Set the position to [0, 0, 0]
-      intersectedObject.position.set(0, 0, 0);
-  
-      console.log("Intersected object: ", intersectedObject);
+    } else {
+      console.log("this is a piece: ", intersectedMesh);
+
+      if (piece.current === null) {
+        console.log("Selected Piece: ", piece.current);
+        piece.current = intersectedMesh;
+        changeMeshColor("red", piece.current);
+      } else {
+        if (piece.current === intersectedMesh) {
+          changeMeshColor("original", piece.current);
+          piece.current = null;
+        } else {
+          //piece.current = intersectedMesh;
+          piece.current.position.x = intersectedMesh.position.x
+          piece.current.position.z = intersectedMesh.position.z
+          
+          intersectedMesh.position.x = 4.5
+          intersectedMesh.position.z = 4.5
+          changeMeshColor("original", piece.current);
+          piece.current = null;
+          //changeMeshColor("red", piece.current);
+        }
+      }
+
+      //change the color to red
+
+      //change back the color
+      //changeMeshColor("original", intersectedObject)
+    }
+
+    //intersectedMesh.position.set(0, 0, 0);
+  }
+
+  function changeMeshColor(color, mesh) {
+    const newMaterial = mesh.material.clone();
+    if (color === "red") {
+      newMaterial.color.set(0xff0000);
+      mesh.material = newMaterial;
+    }
+    if (color === "original") {
+      const originalColor = new THREE.Color(1, 1, 1);
+      newMaterial.color.set(originalColor);
+      mesh.material = newMaterial;
     }
   }
-  
-  
+
+  function selectMesh(event: React.MouseEvent<HTMLButtonElement>) {
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+
+    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+    pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(pointer, camera);
+    const intersects = raycaster.intersectObjects(scene.children, true);
+
+    if (intersects.length > 0) {
+      const intersectedMesh = intersects[0].object;
+      return intersectedMesh;
+    } else {
+      return null; //TO-DO
+    }
+  }
 
   useEffect(() => {
     window.addEventListener("click", handleClick);
@@ -52,7 +102,7 @@ function RaycastHandler() {
     };
   }, [camera, scene]);
 
-  return null; // This component doesn't render anything visible
+  return null;
 }
 
 export function MainCanvas() {
@@ -81,8 +131,7 @@ export function MainCanvas() {
       <Environment preset="city" />
       <CameraControls />
 
-      {/* Include RaycastHandler inside the Canvas to use useThree */}
-      <RaycastHandler />
+      <ClickHandler />
     </Canvas>
   );
 }
