@@ -16,8 +16,8 @@ export function Pieces() {
 
   return (
     <>
-      <WhiteBishop position={[-3.5, 0, 1.5]} upScale={upScale} />
       <WhiteBishop position={[-3.5, 0, -1.5]} upScale={upScale} />
+      <WhiteBishop position={[-3.5, 0, 1.5]} upScale={upScale} />
       <WhiteKing position={[-3.5, 0, 0.5]} upScale={upScale} />
       <WhiteKnight position={[-3.5, 0, -2.5]} upScale={upScale} />
       <WhiteKnight position={[-3.5, 0, 2.5]} upScale={upScale} />

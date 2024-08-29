@@ -1,5 +1,8 @@
-import { Canvas } from "@react-three/fiber";
-import { Board } from "./board/Board";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+
+
 import {
   CameraControls,
   Environment,
@@ -7,12 +10,17 @@ import {
   GizmoViewport,
   PerspectiveCamera,
 } from "@react-three/drei";
+
+import { Board } from "./board/Board";
 import { Pieces } from "./pieces/Pieces";
-import { ClickHandler } from "./ClickHandler";
-import { useInactivityRotation } from "./useInactivityRotation"; // Import the hook
+import { ClickHandler } from "./logick/ClickHandler";
+import { useInactivityRotation } from "./logick/useInactivityRotation";
+
+const ROTATION_SPEED = 0; // -0.002 
+const INACTIVE_TIME = 5000; // 5000ms = 5 seconds
 
 function RotatingBoardAndPieces() {
-  const boardRef = useInactivityRotation();
+  const boardRef = useInactivityRotation(INACTIVE_TIME, ROTATION_SPEED);
 
   return (
     <group ref={boardRef}>

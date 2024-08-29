@@ -2,45 +2,39 @@ import { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-export function useInactivityRotation() {
+export function useInactivityRotation(inactiveTime: number, rotationSpeed: number) {
   const [isRotating, setIsRotating] = useState(false);
   const boardRef = useRef<THREE.Group>(null);
   const inactivityTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const inactiveTime = 5000; //30000 = 30 seconds
 
   useFrame(() => {
     if (isRotating && boardRef.current) {
-      boardRef.current.rotation.y -= 0.004; 
+      boardRef.current.rotation.y += rotationSpeed;
     }
   });
 
   useEffect(() => {
-    function handleUserClick() {
-      // Reset rotation and clear timer on click
+    const resetInactivityTimer = () => {
       setIsRotating(false);
-      if (inactivityTimer.current) {
-        clearTimeout(inactivityTimer.current);
-      }
+      if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
+
       inactivityTimer.current = setTimeout(() => {
         setIsRotating(true);
-      }, inactiveTime); 
-    }
+      }, inactiveTime);
+    };
 
-    window.addEventListener("click", handleUserClick);
+    window.addEventListener("click", resetInactivityTimer);
 
-    // Start timer on mount
+    // Start inactivity timer on mount
     inactivityTimer.current = setTimeout(() => {
       setIsRotating(true);
     }, inactiveTime);
 
     return () => {
-      // Cleanup
-      window.removeEventListener("click", handleUserClick);
-      if (inactivityTimer.current) {
-        clearTimeout(inactivityTimer.current);
-      }
+      window.removeEventListener("click", resetInactivityTimer);
+      if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
     };
-  }, []);
+  }, [inactiveTime]);
 
   return boardRef;
 }

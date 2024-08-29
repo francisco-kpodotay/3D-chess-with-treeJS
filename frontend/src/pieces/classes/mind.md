@@ -1,0 +1,1 @@
+Pawn(color: White, position: [3.5, 3.5, 3.5], neighbourPosition)
